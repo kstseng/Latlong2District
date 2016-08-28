@@ -70,10 +70,11 @@ colnames(<span class="pl-smi">df</span>) <span class="pl-k">&lt;-</span> c(<span
 <span class="pl-c"># 以下三個里是在做的過程中，發現有無法辨別的字，導致出現問號，</span>
 <span class="pl-c"># 反查「村(里)名稱_替代字對照表.pdf」後，再手動修改。</span>
 <span class="pl-smi">kaohsiung_v_Name</span> <span class="pl-k">&lt;-</span> as.character(<span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">V_Name</span>)
-<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">159</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>部北里<span class="pl-pds">"</span></span>)
-<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">160</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>部南里<span class="pl-pds">"</span></span>)
-<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">647</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>帝埔里<span class="pl-pds">"</span></span>)
-<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">724</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>峰山里<span class="pl-pds">"</span></span>)
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">159</span>] <span class="pl-k">&lt;-</span> <span class="pl-s"><span class="pl-pds">"</span>部北里<span class="pl-pds">"</span></span>
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">160</span>] <span class="pl-k">&lt;-</span> <span class="pl-s"><span class="pl-pds">"</span>部南里<span class="pl-pds">"</span></span>
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">647</span>] <span class="pl-k">&lt;-</span> <span class="pl-s"><span class="pl-pds">"</span>帝埔里<span class="pl-pds">"</span></span>
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">724</span>] <span class="pl-k">&lt;-</span> <span class="pl-s"><span class="pl-pds">"</span>峰山里<span class="pl-pds">"</span></span>
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">757</span>] <span class="pl-k">&lt;-</span> <span class="pl-s"><span class="pl-pds">"</span>公館里<span class="pl-pds">"</span></span>
 <span class="pl-smi">district_li</span> <span class="pl-k">&lt;-</span> paste(<span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">T_Name</span>, <span class="pl-smi">kaohsiung_v_Name</span>, <span class="pl-v">sep</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span>)
 
 <span class="pl-c"># 比對後回傳結果，結果為一個字串向量，若找不到的資料，該筆會回傳 NA。</span>
