@@ -66,7 +66,13 @@ colnames(<span class="pl-smi">df</span>) <span class="pl-k">&lt;-</span> c(<span
 <span class="pl-smi">df_sp</span> <span class="pl-k">&lt;-</span> SpatialPoints(<span class="pl-smi">df</span>)
 
 <span class="pl-c"># 做(區-里)名字的向量</span>
-<span class="pl-smi">district_li</span> <span class="pl-k">&lt;-</span> paste(<span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">T_Name</span>, <span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">V_Name</span>, <span class="pl-v">sep</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span>)
+<span class="pl-c"># 以下三個里是在做的過程中，發現有無法辨別的字，導致出現問號，</span>
+<span class="pl-c"># 反查「村(里)名稱_替代字對照表.pdf」後，再手動修改。</span>
+<span class="pl-smi">kaohsiung_v_Name</span> <span class="pl-k">&lt;-</span> as.character(<span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">V_Name</span>)
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">159</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>部北里<span class="pl-pds">"</span></span>)
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">160</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>部南里<span class="pl-pds">"</span></span>)
+<span class="pl-smi">kaohsiung_v_Name</span>[<span class="pl-c1">724</span>] <span class="pl-k">&lt;-</span> c(<span class="pl-s"><span class="pl-pds">"</span>峰山里<span class="pl-pds">"</span></span>)
+<span class="pl-smi">district_li</span> <span class="pl-k">&lt;-</span> paste(<span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">T_Name</span>, <span class="pl-smi">kaohsiung_v_Name</span>, <span class="pl-v">sep</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span>)
 
 <span class="pl-c"># 比對後回傳結果，結果為一個字串向量，若找不到的資料，該筆會回傳 NA。</span>
 <span class="pl-smi">result</span> <span class="pl-k">&lt;-</span> <span class="pl-smi">district_li</span>[over(<span class="pl-smi">df_sp</span>, <span class="pl-smi">li</span>)]</pre></div>
@@ -74,7 +80,7 @@ colnames(<span class="pl-smi">df</span>) <span class="pl-k">&lt;-</span> c(<span
 <h3>
 <a id="好處" class="anchor" href="#%E5%A5%BD%E8%99%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>好處</h3>
 
-<p>透過經緯度的方式，應該就可以不用擔心區里有改名的狀況。大家的結果會一致。</p>
+<p>透過經緯度的方式，應該就可以不用擔心區里有改名，導致最後合併資料會不一致的情況。</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/kstseng/Latlong2District">Latlong2district</a> is maintained by <a href="https://github.com/kstseng">kstseng</a>.</span>
