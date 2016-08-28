@@ -27,8 +27,18 @@
 <h3>
 <a id="步驟" class="anchor" href="#%E6%AD%A5%E9%A9%9F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>步驟</h3>
 
-<p>先下載放在google drive的「村里界圖(TWD97經緯度)1050715.zip」，並解壓縮。
-會得到一個資料夾，叫做「村里界圖(TWD97經緯度)1050715」，並且裡面會包含六個檔案。</p>
+<p>首先先從開放資料平台下載村里界圖的檔案。但我忘了來源在哪裡了...
+我有先下載並放在google drive中，檔名為「村里界圖(TWD97經緯度)1050715.zip」，請先下載並解壓縮。
+解壓縮後會得到一個資料夾，叫做「村里界圖(TWD97經緯度)1050715」，並且裡面會包含六個檔案。
+分別是
+1. 村(里)名稱_替代字對照表.pdf
+2. 村(里)名稱.xlsx
+3. Village_NLSC_1050715.dbf
+4. Village_NLSC_1050715.prj
+5. Village_NLSC_1050715.shp
+6. Village_NLSC_1050715.shx</p>
+
+<p>然後接著就可以開始透過R來處理了。</p>
 
 <div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">rgdal</span>)
 library(<span class="pl-smi">dplyr</span>)
@@ -57,7 +67,7 @@ colnames(<span class="pl-smi">df</span>) <span class="pl-k">&lt;-</span> c(<span
 <h3>
 <a id="好處" class="anchor" href="#%E5%A5%BD%E8%99%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>好處</h3>
 
-<p>透過經緯度的方式，應該就可以不用擔心區里有改名的狀況。</p>
+<p>透過經緯度的方式，應該就可以不用擔心區里有改名的狀況。大家的結果會一致。</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/kstseng/Latlong2District">Latlong2district</a> is maintained by <a href="https://github.com/kstseng">kstseng</a>.</span>
