@@ -1,6 +1,6 @@
 {
   "name": "Latlong2district",
   "tagline": "Given a pair of [lat, long], return related information.",
-  "body": "### 經緯度轉區里\r\n先下載放在google drive的「村里界圖(TWD97經緯度)1050715.zip」，並解壓縮。\r\n\r\n```\r\na <- b\r\n```\r\n\r\n### Support or Contact\r\nHaving trouble with Pages? Check out our [documentation](https://help.github.com/pages) or [contact support](https://github.com/contact) and we’ll help you sort it out.\r\n",
+  "body": "### 經緯度轉區里\r\n先下載放在google drive的「村里界圖(TWD97經緯度)1050715.zip」，並解壓縮。\r\n\r\n```{r}\r\nlibrary(rgdal)\r\nlibrary(dplyr)\r\npathFolder <- \"/Users/kaishentseng/Documents/DataHero-Fire/data/村里界圖(TWD97經緯度)1050715\"\r\ntw <- readOGR(dsn = pathFolder, layer = \"Village_NLSC_1050715\", encoding = \"big5\")\r\n\r\nkaohsiung <- tw[tw$C_Name==\"高雄市\" & !tw$V_Name %in% c(c(\"高雄港\", \"軍事用地\")),] \r\n\r\nli <- SpatialPolygons(kaohsiung@polygons)\r\n\r\n# EX\r\nlatlong <- matrix(c(120.297198, 22.641327, \r\n                    120.638338, 22.994389), ncol = 2, byrow = T)\r\ncolnames(latlong) <- c(\"x\", \"y\")\r\nrownames(latlong) <- c(\"addr_a\", \"addr_b\")\r\nprint(latlong)\r\naddrs <- SpatialPoints(latlong)\r\n\r\n\r\ndistrict_li <- paste(kaohsiung$T_Name, kaohsiung$V_Name, sep = \"-\")\r\nresult <- district_li[over(addrs, li)]\r\n```\r\n\r\n### Support or Contact\r\nHaving trouble with Pages? Check out our [documentation](https://help.github.com/pages) or [contact support](https://github.com/contact) and we’ll help you sort it out.\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
