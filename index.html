@@ -22,7 +22,9 @@
       <h3>
 <a id="經緯度轉區里" class="anchor" href="#%E7%B6%93%E7%B7%AF%E5%BA%A6%E8%BD%89%E5%8D%80%E9%87%8C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>經緯度轉區里</h3>
 
-<p>由Jonhson所建議的方法，利用開放資料中各區里的經緯度邊界，便可以透過輸入一(多)組經緯度，去找出此經緯度所屬數的區里。</p>
+<p>由Johnson所建議的方法，利用開放資料中各區里的經緯度邊界，便可以透過輸入一(多)組經緯度，去找出此經緯度所屬數的區里。</p>
+
+<p>假使每一筆地址資料都已經轉好經緯度，那就可以透過這個方式直接輸出成「XX區-XX里」的格式。</p>
 
 <h3>
 <a id="步驟" class="anchor" href="#%E6%AD%A5%E9%A9%9F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>步驟</h3>
@@ -66,7 +68,7 @@ colnames(<span class="pl-smi">df</span>) <span class="pl-k">&lt;-</span> c(<span
 <span class="pl-c"># 做(區-里)名字的向量</span>
 <span class="pl-smi">district_li</span> <span class="pl-k">&lt;-</span> paste(<span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">T_Name</span>, <span class="pl-smi">kaohsiung</span><span class="pl-k">$</span><span class="pl-smi">V_Name</span>, <span class="pl-v">sep</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span>)
 
-<span class="pl-c"># 比對後回傳結果，若找不到會回傳 NA</span>
+<span class="pl-c"># 比對後回傳結果，結果為一個字串向量，若找不到的資料，該筆會回傳 NA。</span>
 <span class="pl-smi">result</span> <span class="pl-k">&lt;-</span> <span class="pl-smi">district_li</span>[over(<span class="pl-smi">df_sp</span>, <span class="pl-smi">li</span>)]</pre></div>
 
 <h3>
